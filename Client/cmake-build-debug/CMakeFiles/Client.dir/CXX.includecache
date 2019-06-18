@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/BaseSession.h
+sys/socket.h
+-
+sys/types.h
+-
+netinet/in.h
+-
+stdlib.h
+-
+cstdio
+-
+unistd.h
+-
+Fsm.h
+../include/Fsm.h
+
+../include/Client.h
+BaseSession.h
+../include/BaseSession.h
+Options.h
+../include/Options.h
+iostream
+-
+cstring
+-
+
+../include/Fsm.h
+
+../include/Options.h
+
+/home/vladimir/Documents/CLionProjects/FINAL_DATABASE/Client/src/Client.cpp
+Client.h
+/home/vladimir/Documents/CLionProjects/FINAL_DATABASE/Client/src/Client.h
+

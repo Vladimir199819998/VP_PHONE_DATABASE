@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Server.dir/main.cpp.o CMakeFiles/Server.dir/src/Server.cpp.o  -o Server -Wl,-rpath,/home/vladimir/Documents/CLionProjects/FINAL_DATABASE/Server/libs ../libs/libmysqlcppconn.so 
