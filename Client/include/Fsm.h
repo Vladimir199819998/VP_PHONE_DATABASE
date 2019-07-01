@@ -1,4 +1,4 @@
-#ifndef CLIENT_FSM_H
+
 #define CLIENT_FSM_H
 
 typedef enum FSM {

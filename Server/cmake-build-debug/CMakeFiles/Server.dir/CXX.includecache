@@ -180,10 +180,6 @@ memory
 sqlstring.h
 ../libs/include/cppconn/sqlstring.h
 
-/home/vladimir/Documents/CLionProjects/FINAL_DATABASE/Server/main.cpp
-Server.h
-/home/vladimir/Documents/CLionProjects/FINAL_DATABASE/Server/Server.h
-
 /home/vladimir/Documents/CLionProjects/FINAL_DATABASE/Server/src/Server.cpp
 Server.h
 /home/vladimir/Documents/CLionProjects/FINAL_DATABASE/Server/src/Server.h

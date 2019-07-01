@@ -12,8 +12,9 @@ private:
     sql::Driver *driver;
     std::string schema;
 public:
-    ClientForServer() {
+    ClientForServer(CLIENT_DESC id) {
         state = AUTHORIZATION;
+        fd = id;
     }
 
     sql::Connection *get_connection() {

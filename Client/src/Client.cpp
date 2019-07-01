@@ -9,25 +9,28 @@ Client::Client() {
     addr.sin_family = AF_INET;
     addr.sin_port = htons(5000);
     addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+    state = AUTHORIZATION;
     if (connect(fd, (struct sockaddr *) &addr, sizeof(addr)) < 0) {
         perror("connect");
         exit(1);
     }
-    state = AUTHORIZATION;
 }
 
 void Client::loop() {
-    switch (state) {
-        case AUTHORIZATION:
-            authorize();
-            break;
-        case REQUESTING:
-            send_requests();
-            break;
-        case CLOSE:
-            close();
-            break;
+    for (;;) {
+        switch (state) {
+            case AUTHORIZATION:
+                authorize();
+                break;
+            case REQUESTING:
+                send_requests();
+                break;
+            case CLOSE:
+                close();
+                break;
+        }
     }
+
 }
 
 void Client::authorize() {
@@ -64,15 +67,13 @@ void Client::send_requests() {
         cout << QUIT << " : quit\n";
         cin >> user_option;
         switch (user_option) {
-            case 0:
-            {
+            case 0: {
                 cout << "Bye ...\n";
                 state = CLOSE;
                 break;
             }
 
-            case 1:
-            {
+            case 1: {
                 string name;
                 string last_name;
                 string phone;
@@ -83,9 +84,9 @@ void Client::send_requests() {
                 cout << "Enter phone number :";
                 cin >> phone;
                 string buf;
-                buf.append(name).append(" ").append(last_name).append(" ").append(phone);
+                buf += to_string(user_option) + " " + name + + " " + last_name + " " + phone;
                 strcpy(request, buf.c_str());
-                send(fd, request, sizeof(request), 0);
+                send(fd, request, strlen(request), 0);
                 recv(fd, response, sizeof(response), 0);
                 if (strlen(response) <= 0) {
                     perror("Cannot add a user, check out your data");
@@ -94,13 +95,11 @@ void Client::send_requests() {
                 }
                 break;
             }
-            case 2:
-            {
+            case 2: {
                 cout << "Option is temporarily unavailable\n";
                 break;
             }
-            case 3:
-            {
+            case 3: {
                 cout << "Option is temporarily unavailable\n";
                 break;
             }
